@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/item_view_movie_row"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0dp"
+    android:layout_marginRight="0dp"
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="#E4E3E2"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dip">
+
+        <!-- Left Thumbnail image -->
+
+        <ImageView
+            android:id="@+id/img_thumbnail"
+            android:layout_width="80dip"
+            android:layout_height="80dip"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="10dp"/>
+
+        <!-- Name -->
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/img_thumbnail"
+            android:layout_toRightOf="@+id/img_thumbnail"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:typeface="sans"
+            tools:text="Hulk"/>
+
+        <TextView
+            android:id="@+id/desciption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_toRightOf="@+id/img_thumbnail"
+            android:textColor="#040404"
+            android:textSize="15sp"
+            android:textStyle="italic"
+            android:typeface="sans"
+            tools:text="This should be a long description like this example that I'm showing."/>
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
