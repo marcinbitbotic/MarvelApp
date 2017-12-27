@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.marvel.app.marvelapp.MainActivity
+import com.marvel.app.marvelapp.MarvelApplication
 import com.marvel.app.marvelapp.R
 import com.marvel.app.marvelapp.adapter.CustomAdapter
 import com.marvel.app.marvelapp.extensions.inflate
@@ -16,18 +17,23 @@ import com.marvel.app.marvelapp.extensions.showToast
 import com.marvel.app.marvelapp.model.DataModel
 import com.marvel.app.marvelapp.model.ResponseModel
 import com.marvel.app.marvelapp.retrofit.MarvelAPI
+import com.marvel.app.marvelapp.retrofit.NetworkService
 import kotlinx.android.synthetic.main.frag_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 /**
  * Created by Marcin Pogorzelski on 21/09/2017.
  */
 class ListFragment : Fragment(), CustomAdapter.onViewSelectedListener {
 
+    @Inject lateinit var service : NetworkService
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        MarvelApplication.appComponent.inject(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -62,9 +68,8 @@ class ListFragment : Fragment(), CustomAdapter.onViewSelectedListener {
 
         showLoading()
 
-        val apiService = MarvelAPI.create()
-        val call = apiService.getHeros();
-
+        //val apiService = MarvelAPI.create()
+        val call = service.loadHerosList();
 
         call.enqueue(object : Callback<ResponseModel> {
 

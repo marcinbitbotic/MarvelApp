@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v7.widget.Toolbar
+import com.marvel.app.marvelapp.dagger.component.ApplicationComponent
 import com.marvel.app.marvelapp.fragment.ListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -12,7 +13,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //injectDependencies(MarvelApplication.appComponent)
+
         val toolbar = findViewById(R.id.toolbar) as Toolbar
+
         setSupportActionBar(toolbar)
 
         if (savedInstanceState == null) {
@@ -32,6 +37,10 @@ class MainActivity : AppCompatActivity() {
         ft.addToBackStack(null);
         ft.commit();
 
+    }
+
+     fun injectDependencies(appComponent: ApplicationComponent) {
+        //appComponent.inject(this)
     }
 
     fun clearBackStack() {
